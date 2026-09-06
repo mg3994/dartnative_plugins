@@ -1,5 +1,6 @@
 package com.dartnative.deviceinfo
 
+import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
@@ -22,6 +23,19 @@ class DartNativeDeviceInfoPlugin {
         @JvmStatic
         fun setApplicationContext(context: Context) {
             appContext = context.applicationContext
+        }
+
+        private fun getContext(): Context? {
+            if (appContext != null) return appContext
+            return try {
+                val activityThreadClass = Class.forName("android.app.ActivityThread")
+                val currentApplicationMethod = activityThreadClass.getDeclaredMethod("currentApplication")
+                val app = currentApplicationMethod.invoke(null) as? Application
+                appContext = app?.applicationContext
+                appContext
+            } catch (_: Exception) {
+                null
+            }
         }
 
         @JvmStatic
@@ -74,7 +88,7 @@ class DartNativeDeviceInfoPlugin {
             json.put("isPhysicalDevice", isPhysicalDevice)
 
             var androidId = ""
-            appContext?.let { ctx ->
+            getContext()?.let { ctx ->
                 try {
                     androidId = Settings.Secure.getString(ctx.contentResolver, Settings.Secure.ANDROID_ID) ?: ""
                 } catch (_: Exception) {}
