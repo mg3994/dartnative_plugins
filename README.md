@@ -1,11 +1,11 @@
-# dartnative_device_info
+# device_info_kit
 
 Get current device information for DartNative applications on iOS and Android without any Flutter dependencies.
 
 ## Usage
 
 ```dart
-import 'package:dartnative_device_info/dartnative_device_info.dart';
+import 'package:device_info_kit/device_info_kit.dart';
 
 void main() async {
   final deviceInfo = DeviceInfoPlugin();

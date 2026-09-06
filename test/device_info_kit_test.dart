@@ -1,4 +1,4 @@
-import 'package:dartnative_device_info/dartnative_device_info.dart';
+import 'package:device_info_kit/device_info_kit.dart';
 import 'package:test/test.dart';
 
 void main() {

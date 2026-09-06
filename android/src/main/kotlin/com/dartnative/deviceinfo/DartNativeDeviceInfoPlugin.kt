@@ -13,7 +13,7 @@ class DartNativeDeviceInfoPlugin {
     companion object {
         init {
             try {
-                System.loadLibrary("dartnative_device_info")
+                System.loadLibrary("device_info_kit")
             } catch (_: UnsatisfiedLinkError) {}
         }
 

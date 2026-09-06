@@ -22,7 +22,7 @@ class DeviceInfoFFIBindings {
 
     try {
       final DynamicLibrary lib = Platform.isAndroid
-          ? DynamicLibrary.open('libdartnative_device_info.so')
+          ? DynamicLibrary.open('libdevice_info_kit.so')
           : DynamicLibrary.process();
 
       if (Platform.isIOS) {
@@ -38,8 +38,6 @@ class DeviceInfoFFIBindings {
           _FreeDeviceInfoStringDart>('DNDeviceInfoFreeString');
       _loaded = true;
     } catch (e) {
-      // Catch any FFI symbol lookup or library load failure during registrant execution
-      // so the application splash screen / boot sequence is never blocked or frozen.
       _loaded = false;
     }
   }

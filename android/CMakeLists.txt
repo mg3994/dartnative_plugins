@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10.2)
-project(dartnative_device_info LANGUAGES CXX)
+project(device_info_kit LANGUAGES CXX)
 
-add_library(dartnative_device_info SHARED
+add_library(device_info_kit SHARED
     src/main/cpp/device_info_bridge.cpp
 )
 
-target_link_libraries(dartnative_device_info
+target_link_libraries(device_info_kit
     log
 )
